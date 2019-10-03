@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * @file      startup_stm32.s dedicated to STM32F407VGTx device
+  * @file      startup_stm32.s dedicated to STM32F405RGTx device
   * @author    Ac6
   * @version   V1.0.0
   * @date      2019-10-03
@@ -102,7 +102,7 @@ Infinite_Loop:
   .size Default_Handler, .-Default_Handler
 /******************************************************************************
 *
-* The STM32F407VGTx vector table.  Note that the proper constructs
+* The STM32F405RGTx vector table.  Note that the proper constructs
 * must be placed on this to ensure that it ends up at physical address
 * 0x0000.0000.
 *
