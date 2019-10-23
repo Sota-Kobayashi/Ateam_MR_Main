@@ -10,6 +10,7 @@
 
 
 #include "stm32f4xx.h"
+#include "f405boardlib_conf.hpp"
 #include "sequence.hpp"
 #include "auto_running.hpp"
 #include "omni_wheel.hpp"
@@ -26,7 +27,10 @@ int main(void)
 	UART_Initialize<uartName::uart2, 115200> gyro_init;
 	CAN_Initialize<0x00> can_init;
 
-	Sequence sequence(SEQUENCE_PARAMS_STRUCT, gyro_init.uart_interface, sbdbt_init.uart_interface, can_init.can_interface);
+	IO_sigPins<ioName::sig7, ioState::input> emergency;
+	const bool& emergency_state = emergency.readNowState();
+
+	Sequence sequence(emergency_state, SEQUENCE_PARAMS_STRUCT, gyro_init.uart_interface, sbdbt_init.uart_interface, can_init.can_interface);
 	for(;;);
 }
 
