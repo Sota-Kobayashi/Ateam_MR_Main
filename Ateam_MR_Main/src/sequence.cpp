@@ -170,11 +170,11 @@ void Sequence::mechaControl()
 		tape_led.setRGB(0, 0, 0);
 		return;
 	}
-	tape_led.setRGB(255, 255, 255);
 
 	switch(now_mode)
 	{
 	case Mode::STANDBY:
+		tape_led.setRGB(255, 255, 255);
 		if(!increment_mode_was_pushed && dualshock_.isButtonPushed(params_.buttons_function.increment_mode))
 		{
 			transmit_data = static_cast<uint8_t>(Telegram::GO_T_SHIRT_POINT);
@@ -245,6 +245,10 @@ void Sequence::mechaControl()
 		{
 			transmit_data = static_cast<uint8_t>(Telegram::HANG_BATHTOWEL);
 		}
+		break;
+
+	default:
+		tape_led.setRGB(255, 255, 255);
 		break;
 	}
 
