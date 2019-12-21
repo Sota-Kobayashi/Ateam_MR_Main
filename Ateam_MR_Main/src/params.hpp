@@ -18,12 +18,13 @@ constexpr MotorDriver::SendParamsType 	MOTOR_PARAMS3	= {-0.25f, -0.007f, -0.0068
 constexpr MotorDriver::SendParamsType	MOTOR_PARAMS4	= {-0.25f, -0.007f, -0.0068f, 5000, 8192};
 constexpr float 						WHEEL_DIA		= 101.6f;
 constexpr bool							WHEEL_DIR		= false;
+constexpr float							WHEEL_DIST		= 331.0f;
 constexpr float							THETA_OFFSET	= 0.25f * M_PI;
 
 
 constexpr int32_t 			AUTO_RUNNING_ERROR	= 150;
 constexpr float 			ROLLING_SPEED		= 500.0f;
-constexpr pid_gain<float> 	ROLLING_GAIN		= {-22.0f, 0.00f, -1.0f};
+constexpr pid_gain<float> 	ROLLING_GAIN		= {0.39f, 0.00f, 0.0414f};
 constexpr pid_gain<float> 	RUNNING_GAIN		= {47.75f, 1.6f, 0.16f};
 
 constexpr SbdbtDualShock::Pad		RUN_PAD					= SbdbtDualShock::Pad::LEFT;
@@ -45,8 +46,8 @@ constexpr SbdbtDualShock::Buttons 	DECREMENT_MODE			= SbdbtDualShock::Buttons::S
 constexpr uint32_t	TIMEOUT					= 100;
 constexpr float		MAX_VEL_MANUAL			= 1000.0f;
 constexpr float		MAX_VEL_MANUAL_FAST		= 2500.0f;
-constexpr float		MAX_ROLLING_VEL_MANUAL	= 100.0f;
-constexpr float		MAX_ROLLING_VEL_AUTO	= 200.0f;
+constexpr float		MAX_ROLLING_VEL_MANUAL	= static_cast<float>(0.5 * M_PI);
+constexpr float		MAX_ROLLING_VEL_AUTO	= static_cast<float>(0.75 * M_PI);
 
 constexpr OmniWheel4s::OmniWheel4s_ParamStruct OMNI_PARAMS_STRUCT =
 {
@@ -60,7 +61,8 @@ constexpr OmniWheel4s::OmniWheel4s_ParamStruct OMNI_PARAMS_STRUCT =
 	.wheel4_address	= 0x13,
 	.wheel_dia		= WHEEL_DIA,
 	.direction		= WHEEL_DIR,
-	.angle_offset	= THETA_OFFSET
+	.angle_offset	= THETA_OFFSET,
+	.wheel_dist		= WHEEL_DIST
 };
 
 constexpr AutoRunning::AutoRunningParamsStruct AUTO_RUNNING_STRUCT =
