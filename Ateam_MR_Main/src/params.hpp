@@ -8,6 +8,8 @@
 #ifndef PARAMS_HPP_
 #define PARAMS_HPP_
 
+#include "sbdbt.hpp"
+#include "motor_driver.hpp"
 #include "omni_wheel.hpp"
 #include "auto_running.hpp"
 #include "sequence.hpp"
